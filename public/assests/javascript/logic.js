@@ -1,13 +1,14 @@
-<script src="https://www.gstatic.com/firebasejs/5.5.5/firebase.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.5.8/firebase.js"></script>
 
+//   Initialize Firebase
 var config = {
-    apiKey: "AIzaSyBSkCNTdmObD4XuQGDi9DwN3psz6UUWhPU",
-    authDomain: "fir-train-schedule-91131.firebaseapp.com",
-    databaseURL: "https://<DATABASE_NAME>.firebaseio.com",
-    projectId: "fir-train-schedule-91131",
-    storageBucket: "",
-    messagingSenderId: "<SENDER_ID>",
-  };
+    apiKey: "AIzaSyAeET9dh3T6KCn0ECslTEN1xdTRT9t7u-A",
+    authDomain: "fire-base-train-schedule.firebaseapp.com",
+    databaseURL: "https://fire-base-train-schedule.firebaseio.com",
+    projectId: "fire-base-train-schedule",
+    storageBucket: "fire-base-train-schedule.appspot.com",
+    messagingSenderId: "241063767190"
+};
 
 firebase.initializeApp(config);
 
@@ -62,14 +63,14 @@ $("submit-button").on("click", function () {
         return false;
     } else {
         $("#not-military-time").empty();
-		$("#missing-field").empty();
+        $("#missing-field").empty();
         $("#not-a-number").empty();
-        
-        var firstTimeConverted = moment (firstTrainTime, "hh:mm").subtract(1,"years");
+
+        var firstTimeConverted = moment(firstTrainTime, "hh:mm").subtract(1, "years");
         console.log(firstTimeConverted);
 
         var currentTime = moment();
-        console.log("CURRENT TIME: " + moment (currentTime).format("hh:mm"));
+        console.log("CURRENT TIME: " + moment(currentTime).format("hh:mm"));
 
         var diffTime = moment().diff(moment(firstTimeConverted), "minutes");
         console.log("DIFFERENCE IN TIME: " + diffTime);
@@ -81,9 +82,9 @@ $("submit-button").on("click", function () {
         console.log("MINUTES TILL TRAIN: " + tMinutesTillTrain);
 
         var nextTrain = moment().add
-        (tMinutesTillTrain, "minutes").format("hh:mm A");
+            (tMinutesTillTrain, "minutes").format("hh:mm A");
         console.log("ARRIVAL TIME: " + moment
-        (nextTrain).format("hh:mm"));
+            (nextTrain).format("hh:mm"));
 
         var newTrain = {
             trainName: trainName,
@@ -92,26 +93,26 @@ $("submit-button").on("click", function () {
             trainFrequency: trainFrequency,
             nextTrain: nextTrain,
             tMinutesTillTrain: tMinutesTillTrain,
-            currentTime: currentTime.format ("hh:mm A")
+            currentTime: currentTime.format("hh:mm A")
         };
 
         database.ref().push(newTrain);
 
         console.log("train name in database: " + newTrain.trainName);
-		console.log("destination in database: " + newTrain.destination);
-		console.log("first train time in database: " + newTrain.firstTrainTime);
-		console.log("train frequency in database: " + newTrain.trainFrequency);
-		console.log("next train in database: " + newTrain.nextTrain);
-		console.log("minutes away in database: " + newTrain.tMinutesTillTrain);
+        console.log("destination in database: " + newTrain.destination);
+        console.log("first train time in database: " + newTrain.firstTrainTime);
+        console.log("train frequency in database: " + newTrain.trainFrequency);
+        console.log("next train in database: " + newTrain.nextTrain);
+        console.log("minutes away in database: " + newTrain.tMinutesTillTrain);
         console.log("current time in database: " + newTrain.currentTime);
-        
+
         $(".add-train-modal").html("<p>" + newTrain.trainName + " was successfully added to the current schedule");
         $('addTrain').modal();
 
-        $(#"train-name").val("");
-        $(#"destination").val("");
-        $(#"first-train-time").val("");
-        $(#"frequecy").val("");
+        $("#train-name").val("");
+        $("#destination").val("");
+        $("#first-train-time").val("");
+        $("#frequecy").val("");
     }
 });
 

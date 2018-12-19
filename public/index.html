@@ -1,29 +1,39 @@
-c<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
   <!-- 
 Reset
-Fonts
 Stylesheet
 Jquery
-Fonts
 Firebase JS
 Moment JS
 Bootstrap JS
+Bootswatch
 Firebase UI & CSS 
+Google Fonts
 -->
-<link rel="stylesheet" href="./assests/style/reset.css">
-<link rel="stylesheet" href="./assests/style/style.css">
-<script
-  src="https://code.jquery.com/jquery-3.3.1.js"
-  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
-  crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="./assests/style/reset.css">
+  <link rel="stylesheet" href="./assests/style/style.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+    crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+    crossorigin="anonymous"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.5.8/firebase-app.js"></script>
 
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 
 </head>
 
 <body>
+
+  <div class="wrapper">
   <div class="bg-secondary">
     <div class="container">
       <div class="row">
@@ -87,8 +97,12 @@ Firebase UI & CSS
         <div class="card-body">
           <form>
             <div class="form-group">
+              <label for="trainName">Train name <i class="fa fa-question-circle" aria-hidden="="true" data-toggle="tooltip" data-placement="top" title="The name of the train you want to add to the schedule. For example, San Diego Railroad."></i></label>
+              <input type="text" class="form-control" id="train-name" placeholder="Strong Beach Express">
+            </div>
+            <div class="form-group">
               <label for="destination">Destination <i class="fa fa-question-circle" aria-hidden="true" data-toggle="tooltip"
-                  data-placement="top" title="The location to where the train is traveling to. For example, Chicago, IL."></i></label>
+                  data-placement="top" title="The location to where the train is traveling to. For example, Long Beach, CA."></i></label>
               <input type="text" class="form-control" id="destination" placeholder="Long Beach">
             </div>
             <div class="form-group">
@@ -103,6 +117,7 @@ Firebase UI & CSS
               <small id="not-a-number" class="form-validation"></small>
               <input type="text" class="form-control" id="frequency" placeholder="">
             </div>
+
             <p id="missing-field" class="form-validation"></p>
             <button type="submit" class="btn btn-primary rounded" id="submit-button" data-toggle="modal">Add to
               Schedule</button>
@@ -138,14 +153,15 @@ Firebase UI & CSS
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
               </div>
-          </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
+  </div>
 
-
+  <script src="./assests/javascript/logic.js"></script>
 </body>
 
 </html>
